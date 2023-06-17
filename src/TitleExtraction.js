@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 
 const TitleExtraction = (props) => {
   const [data, setdata] = useState({
@@ -9,31 +9,35 @@ const TitleExtraction = (props) => {
     elementName2: "",
     elementName3: "",
   });
+    useEffect(() => {
+    props.onChange(props.childName, {
+        mode: data.mode,
+        titleTags: {
+            numWords: data.numWords,
+            titleTags: [
+                {
+                    elementName: data.elementName1,
+                },
+                {
+                    elementName: data.elementName2,
+                },
+                {
+                    elementName: data.elementName3,
+                },
+            ],
+        },
+    });
+    }, [data]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setdata((prev) => {
       return { ...prev, [name]: value };
     });
-    props.onChange(props.childName, {
-      mode: data.mode,
-      titleTags: {
-        numWords: data.numWords,
-        titleTags: [
-          {
-            elementName: data.elementName1,
-          },
-          {
-            elementName: data.elementName2,
-          },
-          {
-            elementName: data.elementName3,
-          },
-        ],
-      },
-    });
+
   };
   return (
     <div>
+        <h2>Title Extraction</h2>
       <label className="m-2">
         mode : <input type="text" name="mode" onChange={handleChange} />
       </label>

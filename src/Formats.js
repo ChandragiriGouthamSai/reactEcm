@@ -28,6 +28,7 @@ const Formats = (props) =>{
     }
     return(
         <div>
+            <h2>Formats</h2>
             {
             fileType.map((eachvalue)=>{
             return <div key={eachvalue}>

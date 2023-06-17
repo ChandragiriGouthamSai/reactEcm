@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Formats from "./Formats";
 import TitleExtraction from "./TitleExtraction";
+import SynopsisExtraction from "./SynopsisExtraction";
+import AttributesAndTags from "./AttributesAndTags";
 const Source = () => {
   const [data, setData] = useState({
     baseUrl: "",
@@ -74,7 +76,10 @@ const Source = () => {
             onChange={onChildChange}
             childName="titleExtraction"
           />
-          <button onClick={submitHandler}>Submit</button>
+          <SynopsisExtraction  onChange={onChildChange}
+                               childName="synopsisExtraction"/>
+          <AttributesAndTags onChange={onChildChange} childName="attributesAndTags"/>
+          <button onClick={submitHandler} className="btn btn-primary m-4">Submit</button>
         </div>
       </form>
     </div>
